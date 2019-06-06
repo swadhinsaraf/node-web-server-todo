@@ -13,7 +13,7 @@ console.log('database connected successfully');
  //  console.log("unable to fetch database", err);
  //   });
 
-db.collection('Users').find({name:"Swadhin"}).toArray().then((name) =>{
+db.collection('Users').find({name:"swadhin"}).toArray().then((name) =>{
   console.log('Users');
   console.log(JSON.stringify(name,undefined,2));},
   (err) =>{
