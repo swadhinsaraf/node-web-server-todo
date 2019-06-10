@@ -6,7 +6,7 @@ var {Todo} = require('./models/todo');
 var {ObjectID}= require('mongodb');
 
 var app =express();
-
+const port= process.env.PORT || 3000;
 app.use(bodyParser.json());
 
 app.post('/todos', (req,res)=>{
@@ -47,8 +47,26 @@ if (!todo) {
 })
 })
 
-app.listen(3000, ()=>{
-  console.log('started on port 3000');
+app.delete('/todos/:id',(req,res)=>{
+  var id=req.params.id;
+
+  if (!ObjectID.isValid(id)) {
+  return  res.status(404).send();
+  }
+  Todo.findByIdAndRemove(id).then((todo)=>{
+    if (!todo) {
+      return res.status(404).send();
+    }
+    else {
+      res.status(200).send({todo});
+    }
+  }).catch((e)=>{
+    res.status(400).send();
+  })
+})
+
+app.listen(port, ()=>{
+  console.log(`started on port ${port}`);
 });
 
 module.exports= {app};
