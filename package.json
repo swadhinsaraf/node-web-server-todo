@@ -19,7 +19,7 @@
     "express": "^4.17.1",
     "lodash": "^4.17.11",
     "mocha": "^6.1.4",
-    "mongodb": "^2.2.5",
+    "mongodb": "^3.1.13",
     "mongoose": "^4.5.9",
     "nodemon": "^1.19.1",
     "supertest": "^4.0.2"
